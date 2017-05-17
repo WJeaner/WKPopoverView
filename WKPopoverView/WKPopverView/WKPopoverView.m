@@ -1,13 +1,13 @@
 //
-//  JXPopoverView.m
-//  Popover
+//  WKPopoverView.m
+//  WKPopoverView
 //
-//  Created by mac on 17/2/23.
-//  Copyright © 2017年 lifution. All rights reserved.
+//  Created by dev on 2017/5/17.
+//  Copyright © 2017年 Jeaner. All rights reserved.
 //
 
-#import "JXPopoverView.h"
-#import "JXPopoverViewCell.h"
+#import "WKPopoverView.h"
+#import "WKPopoverViewCell.h"
 
 static float const kPopoverViewMargin = 8.f; ///< 边距
 static float const kPopoverViewCellHeight = 40.f; ///< cell指定高度
@@ -18,7 +18,7 @@ float DegreesToRadians(float angle) {
     return angle*M_PI/180;
 }
 
-@interface JXPopoverView () <UITableViewDelegate, UITableViewDataSource>
+@interface WKPopoverView () <UITableViewDelegate, UITableViewDataSource>
 
 #pragma mark - UI
 @property (nonatomic, weak) UIWindow *keyWindow; ///< 当前窗口
@@ -28,14 +28,14 @@ float DegreesToRadians(float angle) {
 @property (nonatomic, weak) UITapGestureRecognizer *tapGesture; ///< 点击背景阴影的手势
 
 #pragma mark - Data
-@property (nonatomic, copy) NSArray<JXPopoverAction *> *actions;
+@property (nonatomic, copy) NSArray<WKPopoverAction *> *actions;
 @property (nonatomic, assign) CGFloat windowWidth; ///< 窗口宽度
 @property (nonatomic, assign) CGFloat windowHeight; ///< 窗口高度
 @property (nonatomic, assign) BOOL isUpward; ///< 箭头指向, YES为向上, 反之为向下, 默认为YES.
 
 @end
 
-@implementation JXPopoverView
+@implementation WKPopoverView
 
 #pragma mark - Lift Cycle
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -62,6 +62,7 @@ float DegreesToRadians(float angle) {
 }
 
 - (void)setShowShade:(BOOL)showShade {
+    
     _showShade = showShade;
     _shadeView.backgroundColor = _showShade ? [UIColor colorWithWhite:0.f alpha:0.18f] : [UIColor clearColor];
     if (_borderLayer) {
@@ -69,9 +70,9 @@ float DegreesToRadians(float angle) {
     }
 }
 
-- (void)setStyle:(PopoverViewStyle)style {
+- (void)setStyle:(PopoverViewStyle)style{
     _style = style;
-    _tableView.separatorColor = [JXPopoverViewCell bottomLineColorForStyle:_style];
+    _tableView.separatorColor = [WKPopoverViewCell bottomLineColorForStyle:_style];
     if (_style == PopoverViewStyleDefault) {
         self.backgroundColor = [UIColor whiteColor];
     } else {
@@ -110,7 +111,7 @@ float DegreesToRadians(float angle) {
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.separatorColor = [JXPopoverViewCell bottomLineColorForStyle:_style];
+    _tableView.separatorColor = [WKPopoverViewCell bottomLineColorForStyle:_style];
     [self addSubview:_tableView];
 }
 
@@ -258,8 +259,8 @@ float DegreesToRadians(float angle) {
 - (CGFloat)calculateMaxWidth {
     CGFloat maxWidth = 0.f, titleLeftEdge = 0.f, imageWidth = 0.f, imageMaxHeight = kPopoverViewCellHeight - PopoverViewCellVerticalMargin*2;
     CGSize imageSize = CGSizeZero;
-    UIFont *titleFont = [JXPopoverViewCell titleFont];
-    for (JXPopoverAction *action in _actions) {
+    UIFont *titleFont = [WKPopoverViewCell titleFont];
+    for (WKPopoverAction *action in _actions) {
         imageWidth = 0.f;
         titleLeftEdge = 0.f;
         
@@ -315,7 +316,7 @@ float DegreesToRadians(float angle) {
 }
 
 /*! @brief 指向指定的View来显示弹窗 */
-- (void)showToView:(UIView *)pointView withActions:(NSArray<JXPopoverAction *> *)actions {
+- (void)showToView:(UIView *)pointView withActions:(NSArray<WKPopoverAction *> *)actions {
     // 判断 pointView 是偏上还是偏下
     CGRect pointViewRect = [pointView.superview convertRect:pointView.frame toView:_keyWindow];// 将rect由rect所在视图转换到目标视图view中，返回在目标视图view中的rect
     CGFloat pointViewUpLength = CGRectGetMinY(pointViewRect);
@@ -338,7 +339,7 @@ float DegreesToRadians(float angle) {
 }
 
 /*! @brief 指向指定的点来显示弹窗 */
-- (void)showToPoint:(CGPoint)toPoint withActions:(NSArray<JXPopoverAction *> *)actions {
+- (void)showToPoint:(CGPoint)toPoint withActions:(NSArray<WKPopoverAction *> *)actions {
     _actions = [actions copy];
     // 计算箭头指向方向
     _isUpward = toPoint.y <= _windowHeight - toPoint.y;
@@ -356,15 +357,15 @@ float DegreesToRadians(float angle) {
 
 static NSString *kPopoverCellIdentifier = @"kPopoverCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    JXPopoverViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPopoverCellIdentifier];
+    WKPopoverViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPopoverCellIdentifier];
     if (!cell) {
-        cell = [[JXPopoverViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPopoverCellIdentifier];
+        cell = [[WKPopoverViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPopoverCellIdentifier];
     }
     
     [cell setAction:_actions[indexPath.row]];
     [cell showBottomLine: indexPath.row < _actions.count - 1];
     cell.style = _style;
-    
+
     return cell;
 }
 
@@ -373,7 +374,7 @@ static NSString *kPopoverCellIdentifier = @"kPopoverCellIdentifier";
         self.alpha = 0.f;
         _shadeView.alpha = 0.f;
     } completion:^(BOOL finished) {
-        JXPopoverAction *action = _actions[indexPath.row];
+        WKPopoverAction *action = _actions[indexPath.row];
         action.handler ? action.handler(action) : NULL;
         _actions = nil;
         [_shadeView removeFromSuperview];

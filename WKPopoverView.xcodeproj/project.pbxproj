@@ -14,6 +14,9 @@
 		D7DCCC301ECBE8AD00DA80BC /* WKPopoverView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCC2E1ECBE8AD00DA80BC /* WKPopoverView.xcdatamodeld */; };
 		D7DCCC321ECBE8AD00DA80BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7DCCC311ECBE8AD00DA80BC /* Assets.xcassets */; };
 		D7DCCC351ECBE8AD00DA80BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DCCC331ECBE8AD00DA80BC /* LaunchScreen.storyboard */; };
+		D7DCCC4D1ECBE92E00DA80BC /* WKPopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCC481ECBE92E00DA80BC /* WKPopoverAction.m */; };
+		D7DCCC4E1ECBE92E00DA80BC /* WKPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCC4A1ECBE92E00DA80BC /* WKPopoverView.m */; };
+		D7DCCC4F1ECBE92E00DA80BC /* WKPopoverViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DCCC4C1ECBE92E00DA80BC /* WKPopoverViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,12 @@
 		D7DCCC311ECBE8AD00DA80BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7DCCC341ECBE8AD00DA80BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7DCCC361ECBE8AD00DA80BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7DCCC471ECBE92E00DA80BC /* WKPopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPopoverAction.h; sourceTree = "<group>"; };
+		D7DCCC481ECBE92E00DA80BC /* WKPopoverAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPopoverAction.m; sourceTree = "<group>"; };
+		D7DCCC491ECBE92E00DA80BC /* WKPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPopoverView.h; sourceTree = "<group>"; };
+		D7DCCC4A1ECBE92E00DA80BC /* WKPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPopoverView.m; sourceTree = "<group>"; };
+		D7DCCC4B1ECBE92E00DA80BC /* WKPopoverViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKPopoverViewCell.h; sourceTree = "<group>"; };
+		D7DCCC4C1ECBE92E00DA80BC /* WKPopoverViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKPopoverViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,7 @@
 		D7DCCC211ECBE8AC00DA80BC /* WKPopoverView */ = {
 			isa = PBXGroup;
 			children = (
+				D7DCCC461ECBE92E00DA80BC /* WKPopverView */,
 				D7DCCC251ECBE8AC00DA80BC /* AppDelegate.h */,
 				D7DCCC261ECBE8AD00DA80BC /* AppDelegate.m */,
 				D7DCCC281ECBE8AD00DA80BC /* ViewController.h */,
@@ -80,6 +90,19 @@
 				D7DCCC231ECBE8AC00DA80BC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7DCCC461ECBE92E00DA80BC /* WKPopverView */ = {
+			isa = PBXGroup;
+			children = (
+				D7DCCC471ECBE92E00DA80BC /* WKPopoverAction.h */,
+				D7DCCC481ECBE92E00DA80BC /* WKPopoverAction.m */,
+				D7DCCC491ECBE92E00DA80BC /* WKPopoverView.h */,
+				D7DCCC4A1ECBE92E00DA80BC /* WKPopoverView.m */,
+				D7DCCC4B1ECBE92E00DA80BC /* WKPopoverViewCell.h */,
+				D7DCCC4C1ECBE92E00DA80BC /* WKPopoverViewCell.m */,
+			);
+			path = WKPopverView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +177,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7DCCC4F1ECBE92E00DA80BC /* WKPopoverViewCell.m in Sources */,
 				D7DCCC2A1ECBE8AD00DA80BC /* ViewController.m in Sources */,
 				D7DCCC271ECBE8AD00DA80BC /* AppDelegate.m in Sources */,
+				D7DCCC4D1ECBE92E00DA80BC /* WKPopoverAction.m in Sources */,
 				D7DCCC301ECBE8AD00DA80BC /* WKPopoverView.xcdatamodeld in Sources */,
+				D7DCCC4E1ECBE92E00DA80BC /* WKPopoverView.m in Sources */,
 				D7DCCC241ECBE8AC00DA80BC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

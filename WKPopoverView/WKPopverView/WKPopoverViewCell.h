@@ -1,21 +1,21 @@
 //
-//  JXPopoverViewCell.h
-//  Popover
+//  WKPopoverViewCell.h
+//  WKPopoverView
 //
-//  Created by mac on 17/2/23.
-//  Copyright © 2017年 lifution. All rights reserved.
+//  Created by dev on 2017/5/17.
+//  Copyright © 2017年 Jeaner. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
-#import "JXPopoverAction.h"
+#import "WKPopoverAction.h"
 
 UIKIT_EXTERN float const PopoverViewCellHorizontalMargin; ///< 水平间距边距
 UIKIT_EXTERN float const PopoverViewCellVerticalMargin; ///< 垂直边距
 UIKIT_EXTERN float const PopoverViewCellTitleLeftEdge; ///< 标题左边边距
 
-@interface JXPopoverViewCell : UITableViewCell
+@interface WKPopoverViewCell : UITableViewCell
 
 @property (nonatomic, assign) PopoverViewStyle style;
+
 
 /*! @brief 标题字体
  */
@@ -25,7 +25,7 @@ UIKIT_EXTERN float const PopoverViewCellTitleLeftEdge; ///< 标题左边边距
  */
 + (UIColor *)bottomLineColorForStyle:(PopoverViewStyle)style;
 
-- (void)setAction:(JXPopoverAction *)action;
+- (void)setAction:(WKPopoverAction *)action;
 
 - (void)showBottomLine:(BOOL)show;
 

@@ -1,9 +1,9 @@
 //
-//  JXPopoverAction.h
-//  Popover
+//  WKPopoverAction.h
+//  WKPopoverView
 //
-//  Created by mac on 17/2/23.
-//  Copyright © 2017年 lifution. All rights reserved.
+//  Created by dev on 2017/5/17.
+//  Copyright © 2017年 Jeaner. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

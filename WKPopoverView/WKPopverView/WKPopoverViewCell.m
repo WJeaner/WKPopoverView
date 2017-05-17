@@ -1,26 +1,26 @@
 //
-//  JXPopoverViewCell.m
-//  Popover
+//  WKPopoverViewCell.m
+//  WKPopoverView
 //
-//  Created by mac on 17/2/23.
-//  Copyright © 2017年 lifution. All rights reserved.
+//  Created by dev on 2017/5/17.
+//  Copyright © 2017年 Jeaner. All rights reserved.
 //
 
-#import "JXPopoverViewCell.h"
+#import "WKPopoverViewCell.h"
 
 // extern
  float const PopoverViewCellHorizontalMargin = 15.f; ///< 水平边距
  float const PopoverViewCellVerticalMargin = 3.f; ///< 垂直边距
  float const PopoverViewCellTitleLeftEdge = 8.f; ///< 标题左边边距
 
-@interface JXPopoverViewCell ()
+@interface WKPopoverViewCell ()
 
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, weak) UIView *bottomLine;
 
 @end
 
-@implementation JXPopoverViewCell
+@implementation WKPopoverViewCell
 
 #pragma mark - Life Cycle
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -46,7 +46,8 @@
 }
 
 #pragma mark - Setter
-- (void)setStyle:(PopoverViewStyle)style {
+- (void)setStyle:(PopoverViewStyle)style{
+
     _style = style;
     _bottomLine.backgroundColor = [self.class bottomLineColorForStyle:style];
     if (_style == PopoverViewStyleDefault) {
@@ -54,6 +55,7 @@
     } else {
         [_button setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
     }
+
 }
 
 #pragma mark - Private
@@ -62,6 +64,7 @@
     // UI
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
     _button.userInteractionEnabled = NO; // has no use for UserInteraction.
+    //使用纯文本进行约束,约束btn的title
     _button.translatesAutoresizingMaskIntoConstraints = NO;
     _button.titleLabel.font = [self.class titleFont];
     _button.backgroundColor = self.contentView.backgroundColor;
@@ -71,6 +74,7 @@
     // Constraint
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-margin-[_button]-margin-|" options:kNilOptions metrics:@{@"margin" : @(PopoverViewCellHorizontalMargin)} views:NSDictionaryOfVariableBindings(_button)]];
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin-[_button]-margin-|" options:kNilOptions metrics:@{@"margin" : @(PopoverViewCellVerticalMargin)} views:NSDictionaryOfVariableBindings(_button)]];
+
     // 底部线条
     UIView *bottomLine = [[UIView alloc] init];
     bottomLine.backgroundColor = [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1.00];
@@ -93,7 +97,7 @@
     return style == PopoverViewStyleDefault ? [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1.00] : [UIColor colorWithRed:0.4 green:0.4 blue:0.4 alpha:1.00];
 }
 
-- (void)setAction:(JXPopoverAction *)action {
+- (void)setAction:(WKPopoverAction *)action {
     [_button setImage:action.image forState:UIControlStateNormal];
     [_button setTitle:action.title forState:UIControlStateNormal];
     _button.titleEdgeInsets = action.image ? UIEdgeInsetsMake(0, PopoverViewCellTitleLeftEdge, 0, -PopoverViewCellTitleLeftEdge) : UIEdgeInsetsZero;

@@ -1,29 +1,29 @@
 //
-//  JXPopoverAction.m
-//  Popover
+//  WKPopoverAction.m
+//  WKPopoverView
 //
-//  Created by mac on 17/2/23.
-//  Copyright © 2017年 lifution. All rights reserved.
+//  Created by dev on 2017/5/17.
+//  Copyright © 2017年 Jeaner. All rights reserved.
 //
 
-#import "JXPopoverAction.h"
+#import "WKPopoverAction.h"
 
-@interface JXPopoverAction ()
+@interface WKPopoverAction ()
 
 @property (nonatomic, strong, readwrite) UIImage *image; ///< 图标
 @property (nonatomic, copy, readwrite) NSString *title; ///< 标题
-@property (nonatomic, copy, readwrite) void(^handler)(JXPopoverAction *action); ///< 选择回调
+@property (nonatomic, copy, readwrite) void(^handler)(WKPopoverAction *action); ///< 选择回调
 
 @end
 
-@implementation JXPopoverAction
+@implementation WKPopoverAction
 
-+ (instancetype)actionWithTitle:(NSString *)title handler:(void (^)(JXPopoverAction *action))handler {
++ (instancetype)actionWithTitle:(NSString *)title handler:(void (^)(WKPopoverAction *action))handler {
     return [self actionWithImage:nil title:title handler:handler];
 }
 
-+ (instancetype)actionWithImage:(UIImage *)image title:(NSString *)title handler:(void (^)(JXPopoverAction *action))handler {
-    JXPopoverAction *action = [[self alloc] init];
++ (instancetype)actionWithImage:(UIImage *)image title:(NSString *)title handler:(void (^)(WKPopoverAction *action))handler {
+    WKPopoverAction *action = [[self alloc] init];
     action.image = image;
     action.title = title ? : @"";
     action.handler = handler ? : NULL;
